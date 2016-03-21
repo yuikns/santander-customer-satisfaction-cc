@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
-ADD_EXECUTABLE(santander-customer-satisfaction-cc main.cc)
+ADD_EXECUTABLE(santander-customer-satisfaction-cc main.cc knn.cc)
 
 ADD_DEPENDENCIES(santander-customer-satisfaction-cc argcv)
 
@@ -39,6 +39,8 @@ TARGET_LINK_LIBRARIES(santander-customer-satisfaction-cc argcv_sys_static)
 TARGET_LINK_LIBRARIES(santander-customer-satisfaction-cc argcv_wrapper_leveldb_static)
 TARGET_LINK_LIBRARIES(santander-customer-satisfaction-cc argcv_wrapper_ini_static)
 TARGET_LINK_LIBRARIES(santander-customer-satisfaction-cc argcv_storage_static)
+TARGET_LINK_LIBRARIES(santander-customer-satisfaction-cc argcv_wrapper_svm_light_static)
+
 #TARGET_LINK_LIBRARIES(santander-customer-satisfaction-cc argcv_wrapper_curl_static)
 
 TARGET_LINK_LIBRARIES(santander-customer-satisfaction-cc pthread)

@@ -28,15 +28,18 @@
 #include <string>
 #include <vector>
 
+#include "knn.h"
+
 #include "argcv/ml/ml.hh"
 #include "argcv/ml/perceptron.hh"
 #include "argcv/ml/sgd.hh"
+#include "argcv/ml/svm.hh"
 #include "argcv/string/string.hh"
 
 using namespace argcv::ml;
 using namespace argcv::string;
 
-void pred_print(perceptron& ctl, const std::string& test, const std::string& result) {
+void pred_print(svm& ctl, const std::string& test, const std::string& result) {
     printf("predict: [%s], [%s]\n", test.c_str(), result.c_str());
     FILE* ftest = fopen(test.c_str(), "r");
     FILE* fresult = fopen(result.c_str(), "w");
@@ -80,8 +83,9 @@ int main(int argc, char* argv[]) {
     const std::string path_train = path_prefix + "train.csv";
     const std::string path_test = path_prefix + "test.csv";
     const std::string path_result = "my_submission.csv";
-    // sgd ctl(0.00000000000001,0.001,10000, 10);
-    perceptron ctl(0, 0.001, 300);
+    // sgd ctl(0.0000000000000000001, 0.001, 10000, 100);
+    svm ctl;
+    // perceptron ctl(0, 0.001, 300);
     FILE* ftrain = fopen(path_train.c_str(), "r");
     char buff[10000];
     buff[9999] = '\0';
